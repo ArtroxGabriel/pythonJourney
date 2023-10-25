@@ -15,5 +15,6 @@ def computer_guess(x):
     print(f"Numero correto: {guess}")
 
 def execute():
-    computer_guess(10)
+
+    computer_guess(int(input("Enter a number: ")))
     print("You guessed correctly!")
