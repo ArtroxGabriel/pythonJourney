@@ -1,4 +1,5 @@
 import random
+
 """Busca binária em uma lista ordenada."""
 def bylist(list, x, inicio, fim):
     # caso base: list vazia
@@ -15,4 +16,5 @@ def bylist(list, x, inicio, fim):
     return bylist(list, x, meio + 1, fim)
 
 lista = [i**3 for i in range(10000)]
-
+lista.sort()
+print(lista[bylist(lista, random.choice(lista), 0, len(lista) - 1)])
