@@ -67,11 +67,6 @@ def play(game, x_player, o_player, print_game=True):
             square = o_player.get_move(game)
         else:
             square = x_player.get_move(game)
-        
-        if game.current_winner:
-            if print_game:
-                print(letter + " wins!")
-            return letter
 
         if game.make_move(square, letter):
             if print_game:
@@ -79,11 +74,41 @@ def play(game, x_player, o_player, print_game=True):
                 game.print_board()
                 print('')
             letter = 'O' if letter == 'X' else 'X'
+        if game.current_winner:
+            if print_game:
+                letter = 'O' if letter == 'X' else 'X'
+                print(letter + " wins!")
+            return letter
     if print_game:
         print("It\'s a tie!")
 
 if __name__ == "__main__":
-    x_player = HumanPlayer('X')
-    o_player = RandomComputerPlayer('O')
+
+    print('''
+     \033[47m\033[30m++================================++\033[0;0m
+     \033[47m\033[30m||                                ||\033[0;0m
+     \033[47m\033[30m||         Tic Tac Toe!           ||\033[0;0m
+     \033[47m\033[30m||    Escolha o modo de Jogo:     ||\033[0;0m
+     \033[47m\033[30m||    \033[31m[1]\033[30m - Player vs Player      ||\033[0;0m
+     \033[47m\033[30m||    \033[31m[2]\033[30m - Player vs Computer    ||\033[0;0m
+     \033[47m\033[30m||    \033[31m[3]\033[30m - Computer vs Computer  ||\033[0;0m
+     \033[47m\033[30m||                                ||\033[0;0m
+     \033[47m\033[30m++================================++\033[0;0m     
+    ''')
+    modo = int(input('\033[47m'+'\033[30m' + '\tDigite o modo de jogo: ' + '\033[0;0m'))
+
+    match modo:
+        case 1:
+            x_player = HumanPlayer('X')
+            o_player = HumanPlayer('O')
+        case 2:
+            x_player = HumanPlayer('X')
+            o_player = RandomComputerPlayer('O')
+        case 3:
+            x_player = RandomComputerPlayer('X')
+            o_player = RandomComputerPlayer('O')
+            
+
+
     t = TicTacToe()
     play(t, x_player, o_player, print_game=True)
