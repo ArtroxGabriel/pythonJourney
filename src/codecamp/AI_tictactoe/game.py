@@ -114,7 +114,7 @@ if __name__ == "__main__":
             o_player = GeniusComputerPlayer("O")
         case 3:
             x_player = RandomComputerPlayer("X")
-            o_player = GeniusComputerPlayer("O")
+            o_player = RandomComputerPlayer("O")
 
 
     t = TicTacToe()
